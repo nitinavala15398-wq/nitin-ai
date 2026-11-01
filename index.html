@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123D35">
+<title>NITIN AI — Aparna Sarovar Zenith</title>
+<style>
+:root {
+  --site-primary: #123D35;
+  --site-on-primary: #FFFFFF;
+  --site-secondary: #DCEBE3;
+  --site-on-secondary: #173A31;
+  --site-background: #F5F8F5;
+  --site-on-background: #172B25;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+.topbar { background: var(--site-primary); color: var(--site-on-primary); padding: calc(16px * var(--site-spacing-scale)) max(5vw, 20px); display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.04em; }
+.logo { width:42px; height:42px; border-radius:14px; display:grid; place-items:center; color:var(--site-primary); background:#E5F1E9; font-size:22px; }
+.brand small { display:block; opacity:.75; font-size:10px; letter-spacing:.13em; margin-top:3px; }
+.top-actions { display:flex; gap:10px; align-items:center; }
+.pill { border:1px solid #ffffff55; padding:8px 12px; border-radius:999px; font-size:12px; color:white; background:#ffffff12; }
+.hero { position:relative; overflow:hidden; background:linear-gradient(120deg, #123D35, #1D6250); color:white; padding:54px max(5vw,20px) 48px; }
+.hero:after { content:""; position:absolute; width:340px; height:340px; border:1px solid #ffffff25; border-radius:50%; right:5%; top:-180px; box-shadow:0 0 0 35px #ffffff0b,0 0 0 75px #ffffff08; opacity:var(--site-decoration-opacity); pointer-events:none; }
+.hero-inner { max-width:1120px; margin:auto; position:relative; z-index:1; }
+.eyebrow { text-transform:uppercase; letter-spacing:.16em; font-size:11px; font-weight:700; color:#C5E6D2; }
+h1 { font-family:var(--site-font-heading); font-size:calc(42px * var(--site-heading-scale)); line-height:1.08; max-width:680px; margin:14px 0; letter-spacing:-.04em; }
+.hero p { color:#E0EEE7; max-width:570px; line-height:1.65; margin:0 0 24px; }
+.primary-btn { background:#E7F2EA; color:#123D35; border:0; border-radius:12px; padding:12px 17px; font-weight:750; }
+.secondary-btn { background:transparent; color:white; border:1px solid #ffffff66; border-radius:12px; padding:11px 16px; font-weight:650; margin-left:8px; }
+.container { width:min(1120px,90%); margin:32px auto 60px; }
+.section-head { display:flex; justify-content:space-between; align-items:end; gap:12px; margin-bottom:16px; }
+h2 { font-size:calc(22px * var(--site-heading-scale)); letter-spacing:-.025em; margin:0; }
+.muted { color:light-dark(#64756D,#AAB8B0); font-size:13px; }
+.cards { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.card { background:light-dark(#FFFFFF,#1D2924); border:1px solid light-dark(#E1EAE4,#35443C); border-radius:calc(18px * var(--site-radius-scale)); padding:20px; min-height:150px; text-align:left; color:var(--site-on-background); transition:transform .18s,border-color .18s; }
+.card:hover { transform:translateY(-3px); border-color:var(--site-primary); }
+.card .emoji { font-size:25px; display:block; margin-bottom:15px; }
+.card strong { display:block; margin-bottom:6px; }
+.card span:last-child { font-size:12px; color:light-dark(#65766D,#AAB8B0); line-height:1.5; }
+.content-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:18px; margin-top:28px; align-items:start; }
+.panel { background:light-dark(#FFFFFF,#1D2924); border:1px solid light-dark(#E1EAE4,#35443C); border-radius:20px; padding:22px; }
+.panel h2 { margin-bottom:6px; }
+.notice { display:flex; gap:12px; padding:14px 0; border-bottom:1px solid light-dark(#E8EEE9,#35443C); }
+.notice:last-child { border:0; padding-bottom:0; }
+.notice-icon { width:38px;height:38px;border-radius:12px;background:var(--site-secondary);color:var(--site-on-secondary);display:grid;place-items:center;flex:none; }
+.notice strong { font-size:14px; }
+.notice p { margin:4px 0 0; font-size:12px; color:light-dark(#66766D,#AAB8B0); line-height:1.5; }
+.demo-tag { display:inline-block; font-size:10px; border-radius:999px; background:#FFF1D6; color:#79551C; padding:5px 8px; font-weight:800; letter-spacing:.05em; }
+.free-plan { margin:22px 0 0; padding:18px 20px; border:1px solid light-dark(#B8D8C4,#42634F); border-radius:18px; background:light-dark(#EDF7F0,#20372B); }
+.free-plan strong { display:block; margin-bottom:5px; }
+.free-plan p { margin:0; font-size:13px; line-height:1.55; color:light-dark(#496357,#C1D6C8); }
+.android-plan { margin-top:14px; padding:18px 20px; border:1px solid light-dark(#D8E3DC,#43534A); border-radius:18px; background:light-dark(#FFFFFF,#1D2924); }
+.android-plan p { margin:6px 0 0; font-size:13px; line-height:1.55; color:light-dark(#64756D,#AAB8B0); }
+.chatbox { display:flex; flex-direction:column; gap:12px; }
+.chat-messages { min-height:160px; max-height:260px; overflow:auto; display:flex; flex-direction:column; gap:10px; padding:8px 0; }
+.bubble { max-width:90%; padding:11px 13px; border-radius:14px; font-size:13px; line-height:1.5; background:light-dark(#EDF4EF,#293A32); }
+.bubble.user { align-self:flex-end; background:var(--site-primary); color:white; }
+.chat-form { display:flex; gap:8px; }
+.chat-form input { min-width:0; flex:1; border:1px solid light-dark(#D8E3DC,#43534A); background:var(--site-background); color:var(--site-on-background); border-radius:12px; padding:12px; outline-offset:2px; }
+.chat-form button { border:0; background:var(--site-primary); color:white; border-radius:12px; padding:0 16px; font-weight:700; }
+.quick { display:flex; flex-wrap:wrap; gap:7px; }
+.quick button { border:1px solid light-dark(#D8E3DC,#43534A); background:transparent; color:var(--site-on-background); border-radius:999px; padding:7px 10px; font-size:11px; }
+.footer { background:var(--site-primary); color:#E4F0E8; padding:24px 5vw; text-align:center; font-size:12px; }
+.disclaimer { font-size:11px; color:light-dark(#77857D,#AAB8B0); line-height:1.5; margin-top:12px; }
+@media (max-width:800px) { .cards{grid-template-columns:repeat(2,1fr)} .content-grid{grid-template-columns:1fr} h1{font-size:calc(35px * var(--site-heading-scale))} .hero{padding-top:42px} }
+@media (max-width:440px) { .topbar{padding:13px 16px}.pill{display:none}.container{width:calc(100% - 30px);margin-top:24px}.cards{gap:10px}.card{padding:15px;min-height:138px}.hero{padding:38px 18px}.secondary-btn{margin:9px 0 0}.hero .primary-btn,.hero .secondary-btn{display:inline-block} }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><div class="logo">✳</div><div>NITIN AI<small>APARNA SAROVAR ZENITH</small></div></div>
+    <div class="top-actions"><span class="pill">Community assistant</span><span class="pill">Resident & visitor preview</span></div>
+  </header>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">A smarter, more connected community</div>
+      <h1>Your community, a little easier.</h1>
+      <p>Welcome to NITIN AI — a friendly place to find community information, explore facilities, discover activities and get help finding the right contact.</p>
+      <button class="primary-btn" onclick="document.getElementById('ask').scrollIntoView({behavior:'smooth'})">Ask NITIN AI ↗</button>
+      <button class="secondary-btn" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})">Explore community</button>
+    </div>
+  </section>
+  <main class="container">
+    <div class="section-head" id="explore"><div><div class="eyebrow" style="color:#36745C">Explore</div><h2>What can we help you with?</h2></div><span class="demo-tag">STARTER PREVIEW</span></div>
+    <div class="cards">
+      <button class="card" onclick="askPreset('Tell me about the community green spaces and parks.')"><span class="emoji">🌳</span><strong>Nature & green spaces</strong><span>Find parks, gardens and outdoor spaces.</span></button>
+      <button class="card" onclick="askPreset('What facilities are available in the community?')"><span class="emoji">🏢</span><strong>Facilities</strong><span>Explore amenities and shared spaces.</span></button>
+      <button class="card" onclick="askPreset('Where can I find community events and activities?')"><span class="emoji">📅</span><strong>Events & activities</strong><span>See activities and community gatherings.</span></button>
+      <button class="card" onclick="askPreset('How can I contact community management?')"><span class="emoji">🤝</span><strong>Resident & visitor help</strong><span>Find the right team or information.</span></button>
+    </div>
+    <section class="free-plan"><strong>₹0 budget: start with free tools</strong><p>We’ll build the first version using free software and free hosting options where available. No paid subscriptions or purchases are needed to create this starter prototype. A live AI connection, custom domain, SMS/WhatsApp messaging or higher usage may require payment later, so we’ll keep those optional and check free limits before enabling anything.</p></section>
+    <section class="android-plan"><strong>📱 Android support is part of the plan</strong><p>NITIN AI will be designed as a mobile-friendly website first, then prepared as an installable Progressive Web App (PWA) so Android users can add it to their home screen without paying for a Play Store listing. Installation will be enabled after the site is hosted securely and its app manifest and offline setup are added.</p></section>
+    <div class="content-grid">
+      <section class="panel">
+        <div class="section-head"><div><h2>Community updates</h2><div class="muted">A space for useful notices</div></div><span class="demo-tag">SAMPLE</span></div>
+        <div class="notice"><div class="notice-icon">📣</div><div><strong>Announcements will appear here</strong><p>Connect an approved community notice source to show verified updates.</p></div></div>
+        <div class="notice"><div class="notice-icon">🎉</div><div><strong>Events calendar coming soon</strong><p>Upcoming events can be added by an authorised community administrator.</p></div></div>
+        <div class="notice"><div class="notice-icon">🛠️</div><div><strong>Facility information</strong><p>Opening hours, booking details and facility rules can be added after verification.</p></div></div>
+        <p class="disclaimer">This preview does not contain official announcements, facility timings, emergency contacts or verified community policies.</p>
+      </section>
+      <section class="panel chatbox" id="ask">
+        <div><div class="eyebrow" style="color:#36745C">Your assistant</div><h2>Chat with NITIN AI</h2><div class="muted">Try a sample question below.</div></div>
+        <div class="chat-messages" id="messages" aria-live="polite">
+          <div class="bubble">Hi! I'm NITIN AI. I can help you navigate this community preview. What would you like to know?</div>
+        </div>
+        <div class="quick">
+          <button onclick="askPreset('What can I find here?')">What can I find here?</button>
+          <button onclick="askPreset('How do I share a community announcement?')">Share an announcement</button>
+        </div>
+        <form class="chat-form" id="chatForm"><input id="question" placeholder="Ask a community question..." aria-label="Ask a community question"><button type="submit">Send</button></form>
+        <p class="disclaimer">Demo chat only: responses are preset guidance, not live AI answers. We’ll first improve this with free tools; real AI services may have limited free quotas and can charge after those limits.</p>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">NITIN AI · Community assistant prototype<br><span style="opacity:.75">₹0 starter approach · Designed for desktop and mobile · Not an official Aparna management service</span></footer>
+</div>
+<script>
+const messages = document.getElementById('messages');
+function addBubble(text, type) { const node=document.createElement('div'); node.className='bubble '+(type||''); node.textContent=text; messages.appendChild(node); messages.scrollTop=messages.scrollHeight; }
+function answerFor(q) {
+ const s=q.toLowerCase();
+ if (s.includes('park') || s.includes('green') || s.includes('nature')) return 'I can help you explore green spaces. The exact park locations and access details need to be added from an approved community source.';
+ if (s.includes('facilit') || s.includes('club') || s.includes('amenit')) return 'Facility details are planned for NITIN AI. We should add verified names, timings, booking rules and accessibility information before publishing them.';
+ if (s.includes('event') || s.includes('activit') || s.includes('calendar')) return 'The events section is ready for an approved community calendar. An authorised administrator can add event names, dates, locations and contact details.';
+ if (s.includes('contact') || s.includes('management') || s.includes('help')) return 'We can add verified management and helpdesk contact details here. For now, please use the community’s existing official communication channels.';
+ if (s.includes('announcement') || s.includes('notice')) return 'Announcements can be added after we define who is authorised to post and approve notices.';
+ return 'Thanks for asking! This is the starter demo, so I do not yet have verified community records or a live AI connection. We can add that in the next build step.';
+}
+function askPreset(q) { document.getElementById('question').value=q; document.getElementById('chatForm').requestSubmit(); }
+document.getElementById('chatForm').addEventListener('submit', function(e) { e.preventDefault(); const input=document.getElementById('question'); const q=input.value.trim(); if(!q)return; addBubble(q,'user'); input.value=''; setTimeout(()=>addBubble(answerFor(q)),250); });
+</script>
+</body>
+</html>
